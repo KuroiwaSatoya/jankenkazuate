@@ -1,9 +1,20 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#define DEBUG
 using namespace std;
 
 void JankenChoice(int &playerHand, int &enemyHand) {
+
+	const char* hands[] = { "グー", "チョキ", "パー" };
+
+	srand((unsigned int)time(NULL));
+
+	enemyHand = rand() % 3;
+
+#ifdef DEBUG
+	cout << "デバッグしています。: 私の手は " << hands[enemyHand] << "です。";
+#endif
 
 	cout << "手を選んでください(1: グー 2: チョキ 3: パー ) > " << endl;
 	cin >> playerHand;
@@ -15,41 +26,15 @@ void JankenChoice(int &playerHand, int &enemyHand) {
 
 	playerHand--;
 
-	srand((unsigned int)time(NULL));
-
-	enemyHand = rand() % 3;
-
 }
 
 bool JankenJudge(int playerHand, int enemyHand)	{
 
-	cout << "あなたが選んだ手は";
-	switch (playerHand)
-	{
-	case 0:
-		cout << "グーです。" << endl; break;
-	case 1:
-		cout << "チョキです。" << endl; break;
-	case 2:
-		cout << "パーです。" << endl; break;
+	const char* hands[] = { "グー", "チョキ", "パー" };
 
-	default:
-		cout << "ERROR" << endl; break;
-	}
+	cout << "あなたが選んだ手は" << hands[playerHand] << "です。" << endl;
 
-	cout << "私が選んだ手は";
-	switch (enemyHand)
-	{
-	case 0:
-		cout << "グーです。" << endl; break;
-	case 1:
-		cout << "チョキです。" << endl; break;
-	case 2:
-		cout << "パーです。" << endl; break;
-
-	default:
-		cout << "ERROR" << endl; break;
-	}
+	cout << "私が選んだ手は" << hands[enemyHand] << "です。" << endl;
 
 	if (playerHand == enemyHand) {
 		cout << "あいこなのでもう1回やります！" << endl;

@@ -8,9 +8,9 @@ int main() {
 	char playAgain = 'y';
 	int gameChoice = -1;
 
-	if (playAgain == 'y' || playAgain == 'Y') {
+	while (true) {
 
-		while (true) {
+		if (playAgain == 'y' || playAgain == 'Y') {
 
 			cout << "じゃんけんゲームがやりたい場合は1、数当てゲームをする場合は2を選択してください。 > "
 				<< endl;
@@ -27,10 +27,10 @@ int main() {
 			cout << "もう一度プレイしますか？(はい: y いいえ: n)" << endl;
 			cin >> playAgain;
 		}
-	}
-	else {
-		cout << "プログラムを終了します。" << endl;
-		return 0;
+		else {
+			cout << "プログラムを終了します。" << endl;
+			return 0;
+		}
 	}
 
 }

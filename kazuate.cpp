@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
+#define DEBUG
 using namespace std;
 
 void KazuateChoice(int& playerNumber, int& enemyNumber) {
@@ -12,10 +13,6 @@ void KazuateChoice(int& playerNumber, int& enemyNumber) {
 		cout << "1～100の数字を入力してください。\n もう一度選んでください。";
 		cin >> playerNumber;
 	}
-
-	srand((unsigned int)time(NULL));
-
-	enemyNumber = rand() % 100 + 1;
 
 }
 
@@ -39,6 +36,14 @@ void StartKazuateGame() {
 	int playerNumber = -1;
 	int enemyNumber = -1;
 	bool draw = true;
+
+	srand((unsigned int)time(NULL));
+
+	enemyNumber = rand() % 100 + 1;
+
+#ifdef DEBUG
+	cout << "DEBUG: 私の手は " << enemyNumber << "です。";
+#endif
 
 	while (draw) {
 		KazuateChoice(playerNumber, enemyNumber);
